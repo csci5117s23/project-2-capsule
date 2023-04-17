@@ -1,5 +1,6 @@
 import React from 'react';
-import styles from './styles/NoteManager.module.css';
+import styles from '../styles/NoteManager.module.css';
+import { FaPlus } from 'react-icons/fa';
 
 const NoteManager = ({ folders, folderManagerOpen }) => {
   const currentFolder = folders.find((folder) => folder.name === folderManagerOpen.title);
