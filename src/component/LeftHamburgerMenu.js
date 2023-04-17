@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import styles from '../styles/LeftHamburgerMenu.module.css';
+import styles from '../../styles/LeftHamburgerMenu.module.css';
 import NoteManager from './NoteManager';
-import { FaSearch, FaFilter, FaSort } from 'react-icons/fa';
+//import { FaSearch, FaFilter, FaSort } from 'react-icons/fa';
 import { useRouter } from 'next/router';
 
 
