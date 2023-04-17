@@ -2,6 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import styles from '../styles/dashboard.module.css';
+import LeftHamburgerMenu from '@/components/LeftHamburgerMenu';
 
 const Dashboard = () => {
   return (
@@ -12,7 +13,7 @@ const Dashboard = () => {
       <div className={styles.newNoteButton}>
         <Link href='/editor'>Create New Note</Link>
       </div>
-
+      <LeftHamburgerMenu/>
       {/* Other dashboard content */}
     </div>
   );
