@@ -33,7 +33,7 @@ export default function SignUpPage() {
         </Head>
         <main>
           <SignedOut>
-            <SignIn />
+            <SignUp />
           </SignedOut>
         </main>
       </>
