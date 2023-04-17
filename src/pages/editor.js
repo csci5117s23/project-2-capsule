@@ -32,7 +32,7 @@ const Editor = () => {
   }, [noteContent]);
 
   return (
-    <div className={styles.editorContainer}>
+    <>
       {/* Top bar */}
       <div className={styles.topBar}>
         {/* Left button: Go back to dashboard */}
@@ -50,24 +50,25 @@ const Editor = () => {
           {isSaved ? 'Saved' : 'Saving...'}
         </div>
       </div>
+      <div className={styles.editorContainer}>
+        {/* Title input (editable) */}
+        <input
+          className={styles.noteTitleInput}
+          type='text'
+          value={noteTitle}
+          onChange={(e) => setNoteTitle(e.target.value)}
+          placeholder='Note Title'
+        />
 
-      {/* Title input (editable) */}
-      <input
-        className={styles.noteTitleInput}
-        type='text'
-        value={noteTitle}
-        onChange={(e) => setNoteTitle(e.target.value)}
-        placeholder='Note Title'
-      />
-
-      {/* Note Editor */}
-      <ReactQuill
-        className={styles.noteEditor}
-        value={noteContent}
-        onChange={setNoteContent}
-        placeholder='Start writing your note...'
-      />
-    </div>
+        {/* Note Editor */}
+        <ReactQuill
+          className={styles.noteEditor}
+          value={noteContent}
+          onChange={setNoteContent}
+          placeholder='Start writing your note...'
+        />
+      </div>
+    </>
   );
 };
 

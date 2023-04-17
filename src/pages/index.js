@@ -48,7 +48,7 @@ export default function Home() {
       <main>
         <SignedOut>
           <div className={`${landingstyles.landingContainer}`}>
-            <div>
+            <div className={`${landingstyles.landingLogoContainer}`}>
               <img
                 className={`${landingstyles.landingLogo}`}
                 src="/imgs/logo_transparent.png"
@@ -59,50 +59,70 @@ export default function Home() {
                 alt="background"
                 className={landingstyles.image}
               ></img>
+
+              {/* <img
+                src="/imgs/landing_medium.png"
+                alt="background"
+                className={landingstyles.imageMedium}
+              ></img> */}
+
+              <img
+                src="/imgs/landing_medium_large.png"
+                alt="background"
+                className={landingstyles.imageMediumLarge}
+              ></img>
+
+              {/* <img
+                src="/imgs/landing_desktop.png"
+                alt="background"
+                className={landingstyles.imageDesktop}
+              ></img> */}
+
             </div>
 
             <div className={landingstyles.detailsContainer}>
+              <div className={landingstyles.detailsBox}>
               
-              <h1 className={landingstyles.welcome}>Welcome to Note Capsule!</h1>
-              
+                <h1 className={landingstyles.welcome}>Welcome to Note Capsule!</h1>
+                
 
-              <p>
-                Note Capsule is a mobile-first, single-page <br></br>
-                note-taking application that allows you to <br></br>
-                quickly create, manage, and access <br></br>
-                your notes across different devices.
-              </p>
+                <p>
+                  Note Capsule is a mobile-first, single-page <br></br>
+                  note-taking application that allows you to <br></br>
+                  quickly create, manage, and access <br></br>
+                  your notes across different devices.
+                </p>
 
-              <Button
-                variant="light"
-                className={landingstyles.landingButton}
-                href="/signin"
-              >
-                Sign In
-              </Button>
-              <br></br>
-              <Button
-                variant="dark"
-                className={landingstyles.landingButton}
-                href="/signup"
-              >
-                Sign Up
-              </Button>
-
-              <div className={landingstyles.landingDetails}>
-                <p>Collect your thoughts.</p>
+                <Button
+                  variant="light"
+                  className={landingstyles.landingButton}
+                  href="/signin"
+                >
+                  Sign In
+                </Button>
                 <br></br>
-                <p>Let's start the trip together!</p>
-              </div>
-              
-            </div>
+                <Button
+                  variant="dark"
+                  className={landingstyles.landingButton}
+                  href="/signup"
+                >
+                  Sign Up
+                </Button>
 
-            <div >
+                <div className={landingstyles.landingDetails}>
+                  <p>Collect your thoughts.</p>
+                  {/* <br></br> */}
+                  <p>Let's start the trip together!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+            <div className={landingstyles.landingFooterContainer}>
               <p className={landingstyles.landingFooter}>
                 © 2023 Team Capsule
               </p>
             </div>
-          </div>
+          
         </SignedOut>
       </main>
     </>

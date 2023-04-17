@@ -1,6 +1,8 @@
 /* styles/editor.module.css */
 .editorContainer {
   padding: 10px;
+  display:flex;
+  flex-direction: column;
 }
 
 .topBar {
@@ -17,6 +19,8 @@
   cursor: pointer;
   border: none;
   background: none;
+  display:flex;
+  align-items: center;
 }
 
 .pageTitle {
@@ -39,5 +43,6 @@
 }
 
 .noteEditor {
-  height: 300px;
+  /* flex-basis:300px; */ /*This sets the min height of the box as 300px, but it causes empty space at the end of the box*/
+  flex-grow:1;
 }

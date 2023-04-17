@@ -5,6 +5,7 @@ import {
   RedirectToSignIn,
 } from "@clerk/nextjs";
 
+import 'react-quill/dist/quill.snow.css';
 import "bootstrap/dist/css/bootstrap.css";
 import "../styles/styles.css"
 import { useEffect } from "react";
