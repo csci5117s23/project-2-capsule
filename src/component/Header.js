@@ -1,6 +1,6 @@
 import React from 'react';
 import LeftHamburgerMenu from './LeftHamburgerMenu';
-import styles from './styles/Header.module.css';
+import styles from '../styles/Header.module.css';
 
 const Header = ({ folderTitle, isFolderEmpty }) => {
   return (
