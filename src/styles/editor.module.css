@@ -1,0 +1,43 @@
+/* styles/editor.module.css */
+.editorContainer {
+  padding: 10px;
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #3c4042; /* Dark gray color similar to Notion */
+  color: #ffffff;
+}
+
+.backButton {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.pageTitle {
+  flex: 1;
+  text-align: center;
+}
+
+.saveStatus {
+  font-size: 14px;
+}
+
+.noteTitleInput {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  outline: none;
+}
+
+.noteEditor {
+  height: 300px;
+}

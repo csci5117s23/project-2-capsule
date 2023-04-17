@@ -1,0 +1,117 @@
+.leftHamburgerMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  background-color: #f9f9f9;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.open {
+  transform: translateX(0);
+}
+
+.dark {
+  background-color: #333;
+  color: #f9f9f9;
+}
+
+.menuToggle {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  cursor: pointer;
+}
+
+.menuContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.topSection {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+  .headerBar {
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+  }
+  
+  .folderTitle {
+  font-size: 18px;
+  }
+  
+  .icons {
+  display: flex;
+  align-items: center;
+  }
+  
+  .icon {
+  margin-right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  }
+  
+  .disabledIcon {
+  margin-right: 10px;
+  font-size: 20px;
+  color: #ccc;
+  cursor: not-allowed;
+  }
+.profileIcon,
+.appLogo,
+.folderIcon,
+.threeDotMenu,
+.loginLogoutIcon,
+.darkModeToggle {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.folderManager {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.folderList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.threeDotMenuList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.addFolderButton {
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.bottomSection {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+/* Custom styles for dark mode */
+.dark .folderList,
+.dark .threeDotMenuList {
+  color: #f9f9f9;
+}
+
+.dark .addFolderButton {
+  color: #f9f9f9;
+}

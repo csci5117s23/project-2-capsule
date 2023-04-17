@@ -1,0 +1,32 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    padding: 0 20px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .folderTitle {
+    font-size: 18px;
+  }
+  
+  .icons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon {
+    margin-right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .disabledIcon {
+    margin-right: 10px;
+    font-size: 20px;
+    color: #ccc;
+    cursor: not-allowed;
+  }
+  

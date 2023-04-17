@@ -1,0 +1,32 @@
+/* styles/dashboard.module.css */
+.dashboardContainer {
+  padding: 20px;
+  background-color: #f8f8f8;
+  min-height: 100vh;
+}
+
+.newNoteButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  padding: 10px;
+  margin: 20px auto;
+  border-radius: 4px;
+  background-color: #4caf50;
+  color: #ffffff;
+  cursor: pointer;
+  text-align: center;
+}
+
+.newNoteButton a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.newNoteButton:hover {
+  background-color: #388e3c;
+}
+
+/* Additional styles for other dashboard components */
+/* ... */
