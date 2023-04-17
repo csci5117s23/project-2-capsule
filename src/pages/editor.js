@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import styles from '../styles/editor.module.css';
 import { Button } from 'react-bootstrap';
 import { ArrowLeft } from 'react-bootstrap-icons';
+import LeftHamburgerMenu from '../components/LeftHamburgerMenu';
 
 // Dynamic import for react-quill to prevent server-side rendering issues
 const ReactQuill = dynamic(import('react-quill'), { ssr: false });
