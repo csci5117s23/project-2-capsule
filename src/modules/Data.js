@@ -362,3 +362,65 @@ export async function exportNote(authToken, noteId, format) {
 //This function first checks if the noteId parameter is defined. 
 //It then sets the file extension based on the specified format (PDF, plain text, or HTML). Next, it sends a GET request to the /note/${noteId}/export/${format} endpoint of the backend API. 
 //The JWT token is included in the request header for authentication.
+
+
+// Copy a note
+export async function copyNote(
+  authToken,
+  userId,
+  id,
+  newCategory,
+  newTitle,
+  newContent
+) {
+  try {
+    // Check if the 'id' parameter is defined
+    if (!id) {
+      throw new Error('Note ID is required for copying');
+    }
+    const createdOn = new Date().toISOString(); // Get the current date and time
+    const response = await fetch(`${backend_base}/note`, {
+      method: 'POST',
+      headers: {
+        'x-api-key': API_KEY,
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${authToken}`, // Add the JWT token to the request header
+      },
+      body: JSON.stringify({
+        userId: userId,
+        title: newTitle,
+        content: newContent,
+        category: newCategory,
+        createdOn: createdOn,
+        copiedFrom: id,
+      }),
+    });
+
+    // Check if the response status code indicates success
+    if (!response.ok) {
+      // Check if the response has a JSON body
+      const contentType = response.headers.get('content-type');
+      let errorData;
+      if (contentType && contentType.includes('application/json')) {
+        errorData = await response.json();
+      } else {
+        errorData = await response.text();
+      }
+      console.error('Error copying note:', errorData);
+      throw new Error('Failed to copy note');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error in copyNote function:', error);
+    throw error;
+  }
+}
+
+
+
+
+
+
+
+
+
