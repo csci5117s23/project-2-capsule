@@ -304,3 +304,61 @@ export async function updateNote(
     throw error;
   }
 }
+
+
+//*********** EXPORT REQUESTS ***********//
+// export a note in these three specific formats: PDF, plain text, HTML
+export async function exportNote(authToken, noteId, format) {
+  try {
+    // Check if the 'noteId' parameter is defined
+    if (!noteId) {
+      throw new Error('Note ID is required for exporting');
+    }
+    
+    // Set the file extension based on the specified format
+    let extension;
+    switch (format) {
+      case 'pdf':
+        extension = 'pdf';
+        break;
+      case 'plain-text':
+        extension = 'txt';
+        break;
+      case 'html':
+        extension = 'html';
+        break;
+      default:
+        throw new Error('Invalid export format');
+    }
+    
+    const response = await fetch(`${backend_base}/note/${noteId}/export/${format}`, {
+      method: 'GET',
+      headers: {
+        'x-api-key': API_KEY,
+        Authorization: `Bearer ${authToken}`, // Add the JWT token to the request header
+      },
+    });
+
+    // Check if the response status code indicates success
+    if (!response.ok) {
+      // Check if the response has a JSON body
+      const contentType = response.headers.get('content-type');
+      let errorData;
+      if (contentType && contentType.includes('application/json')) {
+        errorData = await response.json();
+      } else {
+        errorData = await response.text();
+      }
+      console.error('Error exporting note:', errorData);
+      throw new Error('Failed to export note');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error in exportNote function:', error);
+    throw error;
+  }
+}
+
+//This function first checks if the noteId parameter is defined. 
+//It then sets the file extension based on the specified format (PDF, plain text, or HTML). Next, it sends a GET request to the /note/${noteId}/export/${format} endpoint of the backend API. 
+//The JWT token is included in the request header for authentication.
