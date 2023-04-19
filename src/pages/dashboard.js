@@ -27,7 +27,7 @@ import {
   addCat,
   getNotesByCat,
 } from '@/modules/Data';
-import { addNote, updateNote, deleteCat, getNotesDesc, getNotesAsce } from '@/modules/Data';
+import { addNote, updateNote, deleteCat, getNotesDesc, getNotesAsce, exportNote } from '@/modules/Data';
 
 const Dashboard = () => {
   const { signOut } = useClerk();
@@ -47,6 +47,10 @@ const Dashboard = () => {
   const categorySelectRef = useRef(null);
 
   const [sortDesc, setSortDesc] = useState(false);
+  const [showExportModal, setShowExportModal] = useState(false);
+  const [selectedFormat, setSelectedFormat] = useState('');
+
+
 
 
 
@@ -150,6 +154,31 @@ const Dashboard = () => {
     e.preventDefault();
     window.location.href = `/note/${id}`;
   }
+ 
+
+const handleNoteExport = async (noteId, format) => {
+    try {
+      const authToken = props.jwt;
+      const exportedNote = await exportNote(authToken, noteId, format);
+
+      // Convert the exported note to a data URL
+      const dataURL = `data:application/${format};base64,${exportedNote.base64}`;
+
+      // Create a temporary anchor element to trigger the download
+      const downloadLink = document.createElement('a');
+      downloadLink.href = dataURL;
+      downloadLink.download = `${noteId}.${format}`;
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+
+      // Close the export modal
+      setShowExportModal(false);
+    } catch (error) {
+      console.error('Error exporting note:', error);
+      alert('Failed to export note');
+    }
+  };
 
   return (
     <>
@@ -270,7 +299,54 @@ const Dashboard = () => {
                         >
                           Move to Category
                         </Dropdown.Item>
-                        <Dropdown.Item href='#/action-2'>Export</Dropdown.Item>
+                        <div>
+                      {/* Export modal */}
+                      <Dropdown.Item
+                        onClick={() => setShowExportModal(true)}
+                        href='#/action-2'
+                      >
+                        Export
+                      </Dropdown.Item>
+                      <Modal
+                        show={showExportModal}
+                        onHide={() => setShowExportModal(false)}
+                        centered
+                      >
+                        <Modal.Header closeButton>
+                          <Modal.Title>Export Note</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                          <Form.Group controlId='export-format'>
+                            <Form.Label>Select export format:</Form.Label>
+                            <Form.Control
+                              as='select'
+                              value={selectedFormat}
+                              onChange={(event) => setSelectedFormat(event.target.value)}
+                            >
+                              <option value=''>Select a format</option>
+                              <option value='pdf'>PDF</option>
+                              <option value='plain-text'>Plain Text</option>
+                              <option value='html'>HTML</option>
+                            </Form.Control>
+                          </Form.Group>
+                        </Modal.Body>
+                        <Modal.Footer>
+                          <Button
+                            variant='secondary'
+                            onClick={() => setShowExportModal(false)}
+                          >
+                            Cancel
+                          </Button>
+                          <Button
+                            variant='primary'
+                            onClick={() => handleNoteExport(props.noteToExport._id, selectedFormat)}
+                            disabled={!selectedFormat}
+                          >
+                            Export
+                          </Button>
+                        </Modal.Footer>
+                      </Modal>
+                    </div>
                         <Dropdown.Item href='#/action-3'>Copy</Dropdown.Item>
                         <Dropdown.Item
                           onClick={() => handleDeleteNote(note._id)}
