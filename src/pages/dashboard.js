@@ -12,6 +12,7 @@ import {
   Form,
   InputGroup,
   Dropdown,
+  DropdownButton
 } from 'react-bootstrap';
 import {
   BsList,
@@ -27,7 +28,7 @@ import {
   addCat,
   getNotesByCat,
 } from '@/modules/Data';
-import { addNote, updateNote, deleteCat, getNotesDesc, getNotesAsce, exportNote } from '@/modules/Data';
+import { addNote, updateNote, deleteCat, getNotesDesc, getNotesAsce, exportNote, copyNote } from '@/modules/Data';
 
 const Dashboard = () => {
   const { signOut } = useClerk();
@@ -49,10 +50,6 @@ const Dashboard = () => {
   const [sortDesc, setSortDesc] = useState(false);
   const [showExportModal, setShowExportModal] = useState(false);
   const [selectedFormat, setSelectedFormat] = useState('');
-
-
-
-
 
 
   // Fetch notes and categories on initial render
@@ -158,7 +155,7 @@ const Dashboard = () => {
 
 const handleNoteExport = async (noteId, format) => {
     try {
-      const authToken = props.jwt;
+      const authToken = jwt;
       const exportedNote = await exportNote(authToken, noteId, format);
 
       // Convert the exported note to a data URL
@@ -179,6 +176,27 @@ const handleNoteExport = async (noteId, format) => {
       alert('Failed to export note');
     }
   };
+  
+// Handle note copy
+const handleNoteCopy = async (noteId) => {
+  try {
+    const authToken = jwt;
+    const noteToCopy = notes.find((note) => note._id === noteId);
+    const copiedNote = await copyNote(
+      authToken,
+      noteToCopy.userId,
+      noteId,
+      noteToCopy.category,
+      `Copy of ${noteToCopy.title}`,
+      noteToCopy.content
+    );
+    setNotes([...notes, copiedNote]);
+  } catch (error) {
+    console.error('Error copying note:', error);
+    alert('Failed to copy note');
+  }
+};
+
 
   return (
     <>
@@ -299,55 +317,15 @@ const handleNoteExport = async (noteId, format) => {
                         >
                           Move to Category
                         </Dropdown.Item>
-                        <div>
-                      {/* Export modal */}
-                      <Dropdown.Item
-                        onClick={() => setShowExportModal(true)}
-                        href='#/action-2'
-                      >
-                        Export
-                      </Dropdown.Item>
-                      <Modal
-                        show={showExportModal}
-                        onHide={() => setShowExportModal(false)}
-                        centered
-                      >
-                        <Modal.Header closeButton>
-                          <Modal.Title>Export Note</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                          <Form.Group controlId='export-format'>
-                            <Form.Label>Select export format:</Form.Label>
-                            <Form.Control
-                              as='select'
-                              value={selectedFormat}
-                              onChange={(event) => setSelectedFormat(event.target.value)}
-                            >
-                              <option value=''>Select a format</option>
-                              <option value='pdf'>PDF</option>
-                              <option value='plain-text'>Plain Text</option>
-                              <option value='html'>HTML</option>
-                            </Form.Control>
-                          </Form.Group>
-                        </Modal.Body>
-                        <Modal.Footer>
-                          <Button
-                            variant='secondary'
-                            onClick={() => setShowExportModal(false)}
-                          >
-                            Cancel
-                          </Button>
-                          <Button
-                            variant='primary'
-                            onClick={() => handleNoteExport(props.noteToExport._id, selectedFormat)}
-                            disabled={!selectedFormat}
-                          >
-                            Export
-                          </Button>
-                        </Modal.Footer>
-                      </Modal>
-                    </div>
-                        <Dropdown.Item href='#/action-3'>Copy</Dropdown.Item>
+                        <DropdownButton id='export-dropdown' title='Export'>
+                          <Dropdown.Item onClick={() => handleNoteExport(noteId, 'pdf')}>PDF</Dropdown.Item>
+                          <Dropdown.Item onClick={() => handleNoteExport(noteId, 'plain-text')}>Plain Text</Dropdown.Item>
+                          <Dropdown.Item onClick={() => handleNoteExport(noteId, 'html')}>HTML</Dropdown.Item>
+                        </DropdownButton>
+                        //This will call the handleNoteCopy function with the ID of the note that corresponds to the Copy dropdown item.
+                        <Dropdown.Item onClick={() => handleNoteCopy(note._id)}>
+                          Copy
+                        </Dropdown.Item>
                         <Dropdown.Item
                           onClick={() => handleDeleteNote(note._id)}
                         >
