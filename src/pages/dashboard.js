@@ -46,12 +46,9 @@ const Dashboard = () => {
   const [noteToMove, setNoteToMove] = useState(null);
   // Create a ref to store the select input element
   const categorySelectRef = useRef(null);
-
   const [sortDesc, setSortDesc] = useState(false);
-  const [showExportModal, setShowExportModal] = useState(false);
-  const [selectedFormat, setSelectedFormat] = useState('');
 
-
+  
   // Fetch notes and categories on initial render
   useEffect(() => {
     const fetchNotesAndCats = async () => {
@@ -168,9 +165,6 @@ const handleNoteExport = async (noteId, format) => {
       document.body.appendChild(downloadLink);
       downloadLink.click();
       document.body.removeChild(downloadLink);
-
-      // Close the export modal
-      setShowExportModal(false);
     } catch (error) {
       console.error('Error exporting note:', error);
       alert('Failed to export note');
