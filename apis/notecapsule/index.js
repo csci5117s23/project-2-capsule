@@ -173,12 +173,14 @@ async function editNote(req, res) {
 
 async function getNotesSortedByDate(req, res) {
   const userId = req.user_token.sub;
-  const sortByDesc = req.params.sortByDesc === "true";
-
+  const sortByDesc = req.params.sort === "true";
+  console.log('param is ', sortByDesc);
   const conn = await Datastore.open();
   const options = {
     filter: { "userId": userId },
-    sort: { "createdOn": sortByDesc ? 0 : 1 }, // Use -1 for descending sort order and 1 for ascending sort order
+    useIndex: "createdOn",
+    reverse: true
+    // sort: { "createdOn": sortByDesc ? 0 : 1 }, // Use 0 for descending sort order and 1 for ascending sort order
   };
   conn.getMany("note", options).json(res);
 }
@@ -198,8 +200,8 @@ app.get("/note/:id", getNote); // get a note by note _id
 app.get("/note/category/:cat", getNoteByCat);
 app.put("/note/:id", editNote); // update note by _id with new json
 // app.post("/note", createNote);  // add a new note to curr user
-app.get("/note/sortByDesc/:sortByDesc", getNotesSortedByDate);
-app.get('/note/getAllSearchNotes/:searchInput', getSearchRes);
+app.get("/note/sortByDesc/:sort", getNotesSortedByDate);
+app.get("/note/getSearchRes/:searchInput", getSearchRes);
 
 
 // for categories 

@@ -5,122 +5,25 @@
       "1879ce8704d-my2ub5k42eq02i": {
         "createdOn": "2023-04-20T07:34:40.355Z",
         "category": "health",
-        "content": "<p>new content for note 2222</p>",
         "title": "updated local note 2 updated",
         "userId": "user_2OXeugjSSeqp4tDieMufwv8kUGO",
         "_id": "1879ce8704d-my2ub5k42eq02i"
       },
       "1879d381ab8-gjaad929dzaf0z": {
+        "createdOn": "2023-04-20T07:34:55.334Z",
+        "category": "health",
         "title": "local note 4",
         "content": "<p>new content for note 4</p>",
-        "category": "health",
         "userId": "user_2OXeugjSSeqp4tDieMufwv8kUGO",
-        "createdOn": "2023-04-20T07:34:55.334Z",
         "_id": "1879d381ab8-gjaad929dzaf0z"
       },
-      "1879dc438d2-kilvxeyh8o4t7l": {
-        "title": "local note 4",
-        "content": "new content for note 4",
-        "category": "health",
-        "userId": "user_2OXeugjSSeqp4tDieMufwv8kUGO",
-        "createdOn": "2023-04-20T08:24:55.250Z",
-        "_id": "1879dc438d2-kilvxeyh8o4t7l"
-      },
       "1879dc5403a-npf7yfwkyz8k1t": {
-        "title": "local note 45",
-        "content": "new content for note 45",
-        "category": "health",
-        "userId": "user_2OXeugjSSeqp4tDieMufwv8kUGO",
         "createdOn": "2023-04-20T08:26:02.682Z",
+        "category": "health",
+        "title": "local note 45",
+        "content": "new content for note 45",
+        "userId": "user_2OXeugjSSeqp4tDieMufwv8kUGO",
         "_id": "1879dc5403a-npf7yfwkyz8k1t"
-      },
-      "1879dc5cbec-a0fffi7iktanvi": {
-        "title": "local note 45",
-        "content": "new content for note 45",
-        "category": "health",
-        "userId": "user_2OXeugjSSeqp4tDieMufwv8kUGO",
-        "createdOn": "2023-04-20T08:26:38.444Z",
-        "_id": "1879dc5cbec-a0fffi7iktanvi"
-      },
-      "1879dc74e3b-6ro09r67haopqd": {
-        "title": "local note 45",
-        "content": "new content for note 45",
-        "category": "health",
-        "userId": "user_2OXeugjSSeqp4tDieMufwv8kUGO",
-        "createdOn": "2023-04-20T08:28:17.339Z",
-        "_id": "1879dc74e3b-6ro09r67haopqd"
-      },
-      "1879dc7c1a7-b7ttnjwij3h9j3": {
-        "title": "local note 45",
-        "content": "new content for note 45",
-        "category": "health",
-        "userId": "user_2OXeugjSSeqp4tDieMufwv8kUGO",
-        "createdOn": "2023-04-20T08:28:46.886Z",
-        "_id": "1879dc7c1a7-b7ttnjwij3h9j3"
-      },
-      "1879dcacd52-wrofp99o5czszo": {
-        "title": "local note 45",
-        "content": "new content for note 45",
-        "category": "health",
-        "userId": "user_2OXeugjSSeqp4tDieMufwv8kUGO",
-        "createdOn": "2023-04-20T08:32:06.482Z",
-        "_id": "1879dcacd52-wrofp99o5czszo"
-      },
-      "1879dcb2c04-ltnjjzxw461arq": {
-        "title": "local note 45",
-        "content": "new content for note 45",
-        "category": "health",
-        "userId": "user_2OXeugjSSeqp4tDieMufwv8kUGO",
-        "createdOn": "2023-04-20T08:32:30.723Z",
-        "_id": "1879dcb2c04-ltnjjzxw461arq"
-      },
-      "1879dceefc0-zgygfqxlyw5z8a": {
-        "title": "local note 45",
-        "content": "new content for note 45",
-        "category": "health",
-        "userId": "user_2OXeugjSSeqp4tDieMufwv8kUGO",
-        "createdOn": "2023-04-20T08:36:37.439Z",
-        "_id": "1879dceefc0-zgygfqxlyw5z8a"
-      },
-      "1879dd0fa19-zja3lidep27ftz": {
-        "title": "local note 45",
-        "content": "new content for note 45",
-        "category": "health",
-        "userId": "user_2OXeugjSSeqp4tDieMufwv8kUGO",
-        "createdOn": "2023-04-20T08:38:51.160Z",
-        "_id": "1879dd0fa19-zja3lidep27ftz"
-      },
-      "1879dd40564-qb3ljtdydyz7y7": {
-        "title": "local note 45",
-        "content": "new content for note 45",
-        "category": "health",
-        "userId": "user_2OXeugjSSeqp4tDieMufwv8kUGO",
-        "createdOn": "2023-04-20T08:42:10.659Z",
-        "_id": "1879dd40564-qb3ljtdydyz7y7"
-      },
-      "1879dd4b821-bwzxyrkfpvlecz": {
-        "title": "local note 45",
-        "content": "new content for note 45",
-        "category": "health",
-        "userId": "user_2OXeugjSSeqp4tDieMufwv8kUGO",
-        "createdOn": "2023-04-20T08:42:56.417Z",
-        "_id": "1879dd4b821-bwzxyrkfpvlecz"
-      },
-      "1879dd502c2-hav8bxd2uony2e": {
-        "title": "local note 45",
-        "content": "new content for note 45",
-        "category": "health",
-        "userId": "user_2OXeugjSSeqp4tDieMufwv8kUGO",
-        "createdOn": "2023-04-20T08:43:15.522Z",
-        "_id": "1879dd502c2-hav8bxd2uony2e"
-      },
-      "1879dd67599-rkon3vq0q7hbso": {
-        "title": "local note 45",
-        "content": "new content for note 45",
-        "category": "health",
-        "userId": "user_2OXeugjSSeqp4tDieMufwv8kUGO",
-        "createdOn": "2023-04-20T08:44:50.457Z",
-        "_id": "1879dd67599-rkon3vq0q7hbso"
       }
     }
   ],
@@ -162,42 +65,6 @@
         "userId": "user_2OXeugjSSeqp4tDieMufwv8kUGO",
         "createdOn": "2023-04-20T08:51:38.764Z",
         "_id": "1879ddcb08c-hna4tlcie9g4a0"
-      },
-      "1879ddd964f-abpzwoxvh4524u": {
-        "name": "local note 45",
-        "userId": "user_2OXeugjSSeqp4tDieMufwv8kUGO",
-        "createdOn": "2023-04-20T08:52:37.582Z",
-        "_id": "1879ddd964f-abpzwoxvh4524u"
-      },
-      "1879ddef0c5-30ngckparboc31": {
-        "name": "local note 45",
-        "userId": "user_2OXeugjSSeqp4tDieMufwv8kUGO",
-        "createdOn": "2023-04-20T08:54:06.277Z",
-        "_id": "1879ddef0c5-30ngckparboc31"
-      },
-      "1879de551bc-xp86cb5v8syn17": {
-        "name": "local note 45",
-        "userId": "user_2OXeugjSSeqp4tDieMufwv8kUGO",
-        "createdOn": "2023-04-20T09:01:04.316Z",
-        "_id": "1879de551bc-xp86cb5v8syn17"
-      },
-      "1879de912e0-sri70uof1l2fxn": {
-        "name": "local note 45",
-        "userId": "user_2OXeugjSSeqp4tDieMufwv8kUGO",
-        "createdOn": "2023-04-20T09:05:10.368Z",
-        "_id": "1879de912e0-sri70uof1l2fxn"
-      },
-      "1879de97aa7-fmt0y7biuyujsv": {
-        "name": "local note 45",
-        "userId": "user_2OXeugjSSeqp4tDieMufwv8kUGO",
-        "createdOn": "2023-04-20T09:05:36.935Z",
-        "_id": "1879de97aa7-fmt0y7biuyujsv"
-      },
-      "1879de9cb73-k0ypg9fbwdzwuc": {
-        "name": "local note 45",
-        "userId": "user_2OXeugjSSeqp4tDieMufwv8kUGO",
-        "createdOn": "2023-04-20T09:05:57.619Z",
-        "_id": "1879de9cb73-k0ypg9fbwdzwuc"
       },
       "1879df04ecf-iknytdax9e72te": {
         "createdOn": "2023-04-20T09:13:04.462Z",
