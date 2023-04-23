@@ -22,6 +22,8 @@ const categoriesSchema = Yup.object({
   createdOn: Yup.date().default(() => new Date()),
 });
 
+// const idx = await conn.createIndex('notes', ['title', 'content', 'category']);
+
 const options = {
   // Specify the schema type as "yup"
   schema: 'yup',
@@ -89,6 +91,7 @@ async function getSearchRes(req, res) {
 
   const userId = req.user_token.sub;
   const searchKey = req.params.searchInput;
+  console.log('search for ', searchKey);
   const conn = await Datastore.open();
   const query = {
     userId: userId,
@@ -171,16 +174,15 @@ async function editNote(req, res) {
 //   // console.log(res.json());
 // }
 
+// desceding: sort 0, asc: 1
 async function getNotesSortedByDate(req, res) {
   const userId = req.user_token.sub;
-  const sortByDesc = req.params.sort === "true";
-  console.log('param is ', sortByDesc);
+  const sortByDesc = req.params.sortCrit === "true";
+  console.log('sort');
   const conn = await Datastore.open();
   const options = {
-    filter: { "userId": userId },
-    useIndex: "createdOn",
-    reverse: true
-    // sort: { "createdOn": sortByDesc ? 0 : 1 }, // Use 0 for descending sort order and 1 for ascending sort order
+    filter: { userId : userId },
+    sort: { createdOn : 0} // Use 0 for descending sort order and 1 for ascending sort order
   };
   conn.getMany("note", options).json(res);
 }
@@ -195,12 +197,13 @@ async function getNoteByCat(req, res){
   conn.getMany("note", options).json(res);
 }
 
+
 app.get('/note', getAllNotes); // get all notes under curr user
 app.get("/note/:id", getNote); // get a note by note _id
 app.get("/note/category/:cat", getNoteByCat);
 app.put("/note/:id", editNote); // update note by _id with new json
 // app.post("/note", createNote);  // add a new note to curr user
-app.get("/note/sortByDesc/:sort", getNotesSortedByDate);
+app.get("/note/sort/:sortCrit", getNotesSortedByDate);
 app.get("/note/getSearchRes/:searchInput", getSearchRes);
 
 
