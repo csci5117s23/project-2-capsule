@@ -51,7 +51,21 @@ import {
   getSearchRes,
 } from '@/modules/Data.js';
 
+import {
+  getReminders,
+  deleteReminder,
+  scheduleReminder,
+} from '@/modules/Data.js';
+
 import { generatePdfHTML } from '@/modules/GeneratePDF.js';
+
+//import Calendar from "@/components/Calendar";
+import Time from "@/components/Time";
+import { NotificationManager } from 'react-notifications';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { InvalidTokenError } from 'jwt-decode';
+
 
 const Dashboard = () => {
   const { signOut } = useClerk();
@@ -78,6 +92,9 @@ const Dashboard = () => {
 
   const [searchInput, setSearchInput] = useState(''); // Search input from the user
   const [filterCriteria, setFilterCriteria] = useState(''); // Filter criteria for notes (e.g., category)
+
+  const [showModal, setShowModal] = useState(false);
+
 
   // Fetch notes and categories on initial render
   useEffect(() => {
@@ -251,6 +268,68 @@ const Dashboard = () => {
     setSortDesc(!sortDesc);
     await fetchNotes();
   };
+
+
+  const handleNotificationClick = () => {
+    setShowModal(true);
+  };
+  
+  const handleScheduleClick = async (date, time) => {
+    // Schedule the reminder based on the date and time the user entered
+    const authToken = await getToken({ template: 'codehooks' });
+    const reminder = {
+      date: date,
+      time: time.format('h:mm a'),
+    };
+    const result = await scheduleReminder(authToken, reminder);
+    if (result.success) {
+      NotificationManager.success('Reminder scheduled successfully');
+    } else {
+      NotificationManager.error('Failed to schedule reminder');
+    }
+  };
+
+  const fetchReminders = async () => {
+    const authToken = 'your-auth-token'; // replace with actual auth token
+    const reminders = await getReminders(authToken);
+    console.log(reminders); // do something with the reminders
+  };
+
+  const handleDeleteReminder = async (reminderId) => {
+    const authToken = 'your-auth-token'; // replace with actual auth token
+    const result = await deleteReminder(authToken, reminderId);
+    if (result.success) {
+      NotificationManager.success('Reminder deleted successfully');
+    } else {
+      NotificationManager.error('Failed to delete reminder');
+    }
+  };
+  
+  
+  const Calendar = ({ onScheduleClick }) => {
+  const [date, setDate] = useState(new Date());
+  const [time, setTime] = useState(null);
+
+  const handleClick = () => {
+    onScheduleClick(date, time);
+  };
+
+  return (
+    <div className={styles['date-time-container']}>
+    <DatePicker
+      className={styles['date-picker']}
+      selected={date}
+      onChange={(date) => setDate(date)}
+    />
+    <Time className={styles['time-picker']} onTimeChange={setTime} />
+    <Button className={styles['schedule-button']} onClick={handleClick}>
+      Schedule
+    </Button>
+  </div>
+  );
+};
+
+
 
   // Update the notes list based on the selected category (if any)
   useEffect(() => {
@@ -492,6 +571,25 @@ const Dashboard = () => {
                         </Dropdown.Item>
                         <Dropdown.Item onClick={() => generatePdf(note.title, note.content)} href='#/action-2'>Export</Dropdown.Item>
                         <Dropdown.Item href='#/action-3'>Copy</Dropdown.Item>
+                        
+                        
+                        <Dropdown.Item className="notifications-dropdown" href='#/action-4' onClick={handleNotificationClick}>
+                          Notification
+                        </Dropdown.Item>
+                        <Modal
+                            className={styles['modal-content']}
+                            show={showModal}
+                            onHide={() => setShowModal(false)}>
+                          
+                            <Modal.Header closeButton>
+                              <Modal.Title>Schedule Reminder</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                              <Calendar onScheduleClick={handleScheduleClick} />
+                            </Modal.Body>
+                        </Modal>
+                        
+                        
                         <Dropdown.Item
                           onClick={() => handleDeleteNote(note._id)}
                         >

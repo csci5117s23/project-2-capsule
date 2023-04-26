@@ -326,3 +326,41 @@ export async function updateCat(authToken, id, modifiedCat) {
     throw error;
   }
 }
+
+// schedule a new reminder
+export async function scheduleReminder(authToken, reminder) {
+  const result = await fetch(`${backend_base}/reminder`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${authToken}`,
+    },
+    body: JSON.stringify(reminder),
+  });
+
+  return result.json();
+}
+
+// get all reminders of the current user
+export async function getReminders(authToken) {
+  const result = await fetch(`${backend_base}/reminder`, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${authToken}`,
+    },
+  });
+
+  return result.json();
+}
+
+//delete a reminder
+export async function deleteReminder(authToken, reminderId) {
+  const result = await fetch(`${backend_base}/reminder/${reminderId}`, {
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${authToken}`,
+    },
+  });
+
+  return result.json();
+}
